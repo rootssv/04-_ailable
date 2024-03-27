@@ -1,0 +1,8 @@
+#- name: myhaproxy
+#  src: geerlingguy.haproxy
+
+#- name: myhaproxy2
+#  src: https://github.com/geerlingguy/ansible-role-haproxy/archive/1.1.2.tar.gz
+
+#- name: myhaproxy3
+#  src: https://github.com/geerlingguy/ansible-role-haproxy.git

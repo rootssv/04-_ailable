@@ -1,0 +1,13 @@
+---
+
+- name: REMOVE ALL
+  hosts: all
+  become: true
+  vars_files:
+  - secret.yml
+  tasks:
+  - name: 사용자 제거
+    user:
+      name: "{{ username }}"
+      state: absent
+      remove: yes

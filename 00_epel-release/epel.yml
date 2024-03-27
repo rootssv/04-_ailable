@@ -1,0 +1,7 @@
+- name: epel-release 설치
+  hosts: ansibles
+  tasks:
+  - name: epel-release 설치!!
+    yum:
+      name: epel-release
+      state: latest

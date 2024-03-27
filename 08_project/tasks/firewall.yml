@@ -1,0 +1,20 @@
+--- 
+  - name: 방화벽 패키지 설치 {{ package }}
+    yum:
+      name: "{{ package }}"
+      state: latest
+
+  - name: 방화벽 서비스 기동 {{ service }}
+    service:
+      name: "{{ service }}"
+      enabled: true
+      state: started
+
+  - name: 방화벽 서비스 등록 {{ fw_svc }}
+    firewalld:
+      service: "{{ item }}"
+      immediate: true
+      permanent: true
+      state: enabled
+    with_items: "{{ fw_svc }}"
+

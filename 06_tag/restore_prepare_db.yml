@@ -1,0 +1,22 @@
+---
+- name: stop database service
+  service: 
+    name: "{{ db_service }}"
+    state: stopped
+
+- name: remove file /etc/my.cnf
+  file:
+    path: "{{ db_config_path }}"
+    state: absent
+
+- name: remove file /etc/motd
+  file:
+    path: /etc/motd
+    state: absent
+
+- name: remove database packages
+  yum: 
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ db_packages }}"
+

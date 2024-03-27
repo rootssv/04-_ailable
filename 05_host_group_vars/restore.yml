@@ -1,0 +1,14 @@
+---
+- name: Remove all
+  hosts: all
+  tasks:
+  - name: Remove all!
+    yum:
+      name: "{{ packages }}"
+      state: absent
+    vars:
+      packages:
+        - httpd
+        - mariadb-server
+        - php
+        - mutt

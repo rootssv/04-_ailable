@@ -1,0 +1,21 @@
+---
+- name: .bahrc 만들어 보기
+  hosts: ans
+  tasks:
+    # - name: 호스트 변수 읽기
+    #   include_vars: "hosts_vars/{{ inventory_hostname }}"
+    - name: .bahrc 만들기
+      template:
+        src: templates/bashrc.j2
+        dest: /home/devops/.bashrc
+    - name: 디렉토리 삭제
+      file:
+        path: /home/devops/.local/share/blesh
+        state: absent
+    - name: 디렉토리 복사 - $HOME/ble.sh/
+      copy:
+        src: files/blesh
+        dest: /home/devops/.local/share/
+        owner: devops
+        group: devops
+
